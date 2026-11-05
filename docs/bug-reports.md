@@ -7,3 +7,4 @@
 **Attachment:** bug_1.png
 **Severity:** Low, displays in wrong order
 **Priority:** P2, tasks can still be created and the website is functional 
+
