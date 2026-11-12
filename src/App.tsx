@@ -35,7 +35,8 @@ const App: React.FC = () => {
       task.id === id ? { ...task, completed: !task.completed } : task
     ));
   };
-
+  // BUG: filtrează după titlu, care nu e unic, deci șterge toate task-urile cu același titlu.
+  // Corect ar fi să compare după un id unic al task-ului.
   const handleDeleteTasks = (title: string) => {
     setTasks(tasks.filter(task => task.title !== title));
   }

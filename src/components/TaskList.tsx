@@ -110,7 +110,8 @@ const TaskList: React.FC<TaskListProps> = ({ tasks, onToggleComplete, onDeleteTa
                                     {task.completed ? 'Mark Undone' : 'Mark Done'}
                                 </button>
                                 <button
-                                    onClick={() => onDeleteTask(task.title)}
+                                        //// BUG: se trimite titlul, care nu e unic; ar trebui un id unic al task-ului
+                                    onClick={() => onDeleteTask(task.title)} 
                                     className="py-1 px-2 text-xs bg-rose-500 hover:bg-rose-600 text-white rounded-md"
                                 >
                                     Delete
