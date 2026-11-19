@@ -23,7 +23,7 @@ A small React + TypeScript task-tracking app, used as the course's shared practi
 Anything not covered above is intentionally left to interpretation — in real QA work, requirements are often incomplete, and part of the exercise is deciding what "correct" and "user-friendly" mean from context.
 
 ## Running it
-
+saasdas
 ```
 npm install
 npm run dev
