@@ -9,6 +9,7 @@ test('the app loads and shows its heading', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Daybreak Tasks' })).toBeVisible();
 });
 
+// R1 
 test('a new task can be created', async ({ page }) => {
     const taskTitle = 'Buy milk';
 
@@ -19,6 +20,7 @@ test('a new task can be created', async ({ page }) => {
     // Verify that the task is now visible
     await expect(page.getByRole('heading', { name: taskTitle })).toBeVisible();    
 });
+
 
 test('an existing task can be marked as complete', async ({ page }) => {
     const taskTitle = 'Buy milk';
@@ -36,6 +38,7 @@ test('an existing task can be marked as complete', async ({ page }) => {
     await expect(task.getByRole('button', { name: 'Mark Undone' })).toBeVisible();
 });
 
+
 test('an existing task can be deleted and doesnt reappear after reload', async ({ page }) => {
     const taskTitle = 'Buy milk';
     // Create the task
@@ -49,20 +52,22 @@ test('an existing task can be deleted and doesnt reappear after reload', async (
     await task.getByRole('button', { name: 'Delete' }).click();
     // Verify that the task is no longer visible
     await expect(task).not.toBeVisible();
-    page.reload();
+    await page.reload();
 
     // Verify that the task is still not visible after reload
     await expect(task).not.toBeVisible();
 });
 
+// R1
 test('a task with an empty title is not created', async ({ page }) => {
     // Attempt to create a task with an empty title
     await page.getByRole('button', { name: 'Create Task' }).click();
 
     // Verify that the task is not created
-    await expect(page.getByRole('heading', { name: 'New Task' })).not.toBeVisible();
+    await expect(page.locator('.task-item')).toHaveCount(0);
 });
 
+// R6
 test('a lowercase title is saved with a capital letter', async ({ page }) => {
     const taskTitle = 'buy milk';
     const expectedTitle = 'Buy milk';
@@ -72,21 +77,22 @@ test('a lowercase title is saved with a capital letter', async ({ page }) => {
     await page.getByRole('button', { name: 'Create Task' }).click();
 
     // Verify that the task is saved with a capital letter
-    await expect(page.getByRole('heading', { name: expectedTitle })).toBeVisible();
+    await expect(page.locator('.task-item h3')).toHaveText(expectedTitle);
 });
 
+// R6 (assumption)
 test ('a tast with a title with spaces at the beginning and end is saved with the spaces trimmed', async ({ page }) => {
     const taskTitle = '   buy milk   ';
-    const expectedTitle = 'Buy milk';
     
     // Create the task
     await page.getByPlaceholder('What do you need to do?').fill(taskTitle);
     await page.getByRole('button', { name: 'Create Task' }).click();
 
     // Verify that the task is saved with a capital letter and trimmed spaces
-    await expect(page.getByRole('heading', { name: expectedTitle })).toBeVisible();
+    await expect(page.locator('.task-item h3')).toHaveText(/^Buy milk$/);
 });
 
+//R3 
 test('a new task starts as not completed', async ({ page }) => {
     const taskTitle = 'Buy milk';
     // Create the task
@@ -120,6 +126,7 @@ test('deleting one of two same-title tasks leaves the other', async ({ page }) =
     await expect(page.locator('.task-item')).toHaveCount(1);
 });
 
+//R1 
 test ('you cannot createa a task with only spaces in the title', async ({ page }) => {
     // Attempt to create a task with only spaces in the title
     await page.getByPlaceholder('What do you need to do?').fill('   ');
@@ -147,6 +154,7 @@ test('cancelling an edit does not mark the task as done', async ({ page }) => {
     await expect(task.getByRole('button', { name: 'Mark Done' })).toBeVisible();
 });
 
+// R1 (the rule should also apply when editing)
 test('editing a task title to be empty does not change the title', async ({ page }) => {
     const taskTitle = 'Buy milk';
 
@@ -162,7 +170,7 @@ test('editing a task title to be empty does not change the title', async ({ page
 
     // Attempt to change the title to be empty
     await task.getByPlaceholder('Title').fill('');
-    await task.getByRole('button', { name: 'Save' }).click();
+    await task.getByRole('button', { name: 'Save Changes' }).click();
 
     // Verify that the task title is still the original title
     await expect(task).toContainText(taskTitle);
