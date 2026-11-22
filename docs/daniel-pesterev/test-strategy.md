@@ -53,4 +53,4 @@ Chrome/Edge DevTools (Lighthouse, Console, Device Toolbar), capturi de ecran și
 
 Prioritate maximă: adăugare/eliminare produs și continuarea checkout, deoarece afectează fluxul de cumpărare. Urmează accesibilitatea cu tastatura și erorile de runtime, apoi filtrarea/sortarea și aspectul vizual.
 
-Un defect **Critical** deschis împiedică recomandarea lansării; toate rezultatele trebuie susținute prin pași și dovezi.
+

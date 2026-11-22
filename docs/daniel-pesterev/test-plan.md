@@ -5,8 +5,6 @@
 **Adresă:** https://practicesoftwaretesting.com/  
 **Sprint de testare propus:** 23–27.11.2026  
 
-> Plan orientativ de exercițiu, nu un sprint oficial al proiectului.
-
 ## 1. Domeniu inclus / exclus
 
 **IN:** căutare, filtre, sortare, detalii produs, coș (adăugare, schimbare cantitate, eliminare), trecere la autentificare/checkout, accesibilitate cu tastatura și comportament responsive.
@@ -80,4 +78,4 @@ Aceste criterii definesc închiderea unui sprint viitor; nu reprezintă afirmaț
 - [ ] Eliminarea actualizează lista produselor și totalul corect în Chrome și Edge.
 - [ ] Nu există defecte Critical sau High deschise asociate poveștii; dovezile sunt atașate.
 
-Listele DoR/DoD reprezintă acorduri propuse pentru această poveste, nu starea actuală verificată a implementării.
+
