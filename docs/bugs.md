@@ -26,5 +26,3 @@
 
 ## Titlurile taskurilor editate sunt cu litera mica
     la editarea titlului, nu apare majuscula la fel ca la creeare
-
-## Este posibila creearea taskurilor cu caractere speciale
