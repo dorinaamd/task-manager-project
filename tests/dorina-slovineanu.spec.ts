@@ -12,3 +12,11 @@ await page.getByRole('button', { name: 'Create Task' }).click();
 
 await expect(page.getByRole('heading', { name: 'Do Lab10 ASAP' })).toBeVisible();
 });
+
+test('a new task starts as not completed', async ({ page }) => {
+  await page.getByPlaceholder('What do you need to do?').fill('Buy milk');
+  await page.getByRole('button', { name: 'Create Task' }).click();
+
+  const task = page.locator('.task-item').filter({ hasText: 'Buy milk' });
+  await expect(task.getByRole('button', { name: 'Mark Done' })).toBeVisible();
+});
